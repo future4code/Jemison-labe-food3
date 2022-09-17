@@ -1,11 +1,12 @@
-
+import {Router} from './Routes/Routers'
+import { ChakraProvider } from '@chakra-ui/react'
+import {theme} from './Styled/Themas'
 
 function App() {
   return (
-    <div>
-      <h1>LABEFUDE</h1>
-      
-    </div>
+    <ChakraProvider theme={theme}>
+      <Router/>
+    </ChakraProvider>
   );
 }
 

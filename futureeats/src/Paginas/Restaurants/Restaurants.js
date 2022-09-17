@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Restaurant = () => {
+export const Restaurants = () => {
     return(
         <div>
             <h1>PAGINA DO RESTAURANTE</h1>
