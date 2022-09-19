@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Button, FormControlLabel, Radio, RadioGroup, Typography } from "@mui/material";
-import { GlobalStateContext } from "../../global/GlobalStateContext";
+import { GlobalStateContext } from "../../Global/GlobalStateContext"
 import useRequestData from "../../hooks/useRequestData";
 import { baseURL } from "../../constants/baseurl";
 import { MainContainer, AddressContainer, RestaurantContainer, ShippingContainer, PaymentContainer, TotalContainer } from "./styled-cart";
