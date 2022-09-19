@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Button, FormControlLabel, Radio, RadioGroup, Typography } from "@mui/material";
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
-import useRequestData from "../../hooks/useRequestData";
-import { baseURL } from "../../constants/baseurl";
-import { MainContainer, AddressContainer, RestaurantContainer, ShippingContainer, PaymentContainer, TotalContainer } from "./styled-cart";
+import useRequestData from "../../Hooks/useRequestData";
+import { BASE_URL } from "../../Constants/Constants";
+import { MainContainer, AddressContainer, RestaurantContainer, ShippingContainer, PaymentContainer, TotalContainer } from "../Cart/style";
 import Header from "../../components/Header/Header";
 import Navigation from "../../components/Navigation/Navigation";
 import { ButtonDiv, CardProducts, ProductImage, ProductText, TypographyStyled } from "../../components/Restaurant/styled-restaurant";
@@ -14,7 +14,7 @@ import ActiveOrder from "../../components/ActiveOrder/ActiveOrder";
 const Cart = () => {
     useProtectedPage();
     const { restaurants, productsInCart, setProductsInCart, restaurantId, getActiveOrder, activeOrder } = useContext(GlobalStateContext);
-    const [profile] = useRequestData([], `${baseURL}/profile`);
+    const [profile] = useRequestData([], `${BASE_URL}/profile`);
     const [paymentValue, setPaymentValue] = useState("");
     const token = window.localStorage.getItem("token");
     const [productData, setProductData] = useState([]);
@@ -98,14 +98,14 @@ const Cart = () => {
             paymentMethod: paymentValue,
         };
         axios
-            .post(`${baseURL}/restaurants/${restaurantId}/order`, body, {
+            .post(`${BASE_URL}/restaurants/${restaurantId}/order`, body, {
                 headers: {
                     auth: token,
                 },
             })
             .then((res) => {
                 alert("Pedido realizado!");
-                getActiveOrder(`${baseURL}/active-order`);
+                getActiveOrder(`${BASE_URL}/active-order`);
             })
             .catch((err) => {
                 alert(err.response.data.message);
