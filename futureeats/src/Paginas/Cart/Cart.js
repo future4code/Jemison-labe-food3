@@ -5,7 +5,6 @@ import { GlobalStateContext } from "../../Global/GlobalStateContext"
 import useRequestData from "../../Hooks/useRequestData";
 import { BASE_URL } from "../../Constants/Constants";
 import { MainContainer, AddressContainer, RestaurantContainer, ShippingContainer, PaymentContainer, TotalContainer } from "../Cart/style";
-import Header from "../../components/Header/Header";
 import Navigation from "../../components/Navigation/Navigation";
 import { ButtonDiv, CardProducts, ProductImage, ProductText, TypographyStyled } from "../../components/Restaurant/styled-restaurant";
 import useProtectedPage from "../../hooks/useProtectedPage";
@@ -146,7 +145,7 @@ const Cart = () => {
 
     return (
         <MainContainer>
-            <Header title="Meu Carrinho" />
+         <h1>Carrinho</h1>
 
             <AddressContainer>
                 <Typography mb={0.5} color="secondary">
