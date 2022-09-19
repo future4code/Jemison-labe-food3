@@ -1,6 +1,6 @@
 import { Snackbar, Typography } from "@mui/material";
-import { GlobalStateContext } from "../../global/GlobalStateContext";
-import React, { useContext, useEffect } from "react";
+import { GlobalStateContext } from "../../Global/GlobalStateContext";
+import React, { useContext} from "react";
 import MuiAlert from "@mui/material/Alert";
 
 const Alert = React.forwardRef(function Alert(props, ref) {

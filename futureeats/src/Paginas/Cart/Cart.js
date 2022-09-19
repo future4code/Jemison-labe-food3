@@ -7,10 +7,10 @@ import { BASE_URL } from "../../Constants/Constants";
 import { MainContainer, AddressContainer, RestaurantContainer, ShippingContainer, PaymentContainer, TotalContainer } from "../Cart/style";
 import Navigation from "../../components/Navigation/Navigation";
 import { ButtonDiv, CardProducts, ProductImage, ProductText, TypographyStyled } from "../../Paginas/Cart/style";
-import useProtectedPage from "../../hooks/useProtectedPage";
-import ActiveOrder from "../../components/ActiveOrder/ActiveOrder";
+import useProtectedPage from "../../Hooks/useProtectedPage";
+import ActiveOrder from "../../components/Orders/ActiveOrder";
 
-const Cart = () => {
+export const Cart = () => {
     useProtectedPage();
     const { restaurants, productsInCart, setProductsInCart, restaurantId, getActiveOrder, activeOrder } = useContext(GlobalStateContext);
     const [profile] = useRequestData([], `${BASE_URL}/profile`);
@@ -218,4 +218,3 @@ const Cart = () => {
     );
 };
 
-export default Cart;

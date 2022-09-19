@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button, Card, CardMedia, Typography } from "@mui/material";
 
 export const MainContainer = styled.div`
   margin-bottom: 30vh;
@@ -16,6 +17,7 @@ export const AddressContainer = styled.div`
 export const RestaurantContainer = styled.div`
   padding: 1rem;
 `;
+
 export const ShippingContainer = styled.div`
   width: 100vw;
   display: flex;
@@ -37,10 +39,6 @@ export const TotalContainer = styled.div`
 export const PaymentContainer = styled.div`
   padding: 1rem;
 `;
-
-import styled from "styled-components";
-import { Button, Card, CardMedia, Typography } from "@mui/material";
-import { greyish } from "../../constants/colors";
 
 export const MainDiv = styled.div`
   display: flex;
@@ -73,7 +71,7 @@ export const CardProducts = styled(Card)`
   width: 95vw;
   margin: 5px;
   position: relative;
-  border: 1px solid ${greyish} !important;
+  border: 1px solid #b8b8b8 !important;
 `;
 
 export const ProductImage = styled(CardMedia)`
