@@ -1,12 +1,12 @@
 import * as React from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import { BoxStyled } from "./styled-navigation";
+import { BoxStyled } from "../Navigation/style";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import { useNavigate } from "react-router";
-import { goToCart, goToHome, goToProfile } from "../../routes/coordinator";
+import { goToCart, goToLogin, goToProfile } from "../../Routes/Coordinator";
 
 const Navigation = ({ screen }) => {
   const [value, setValue] = React.useState(screen);
@@ -21,7 +21,7 @@ const Navigation = ({ screen }) => {
         }}
       >
         <BottomNavigationAction
-          onClick={() => goToHome(navigate)}
+          onClick={() => goToLogin(navigate)}
           icon={<HomeOutlinedIcon />}
         />
         <BottomNavigationAction

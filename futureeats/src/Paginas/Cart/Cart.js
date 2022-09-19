@@ -6,7 +6,7 @@ import useRequestData from "../../Hooks/useRequestData";
 import { BASE_URL } from "../../Constants/Constants";
 import { MainContainer, AddressContainer, RestaurantContainer, ShippingContainer, PaymentContainer, TotalContainer } from "../Cart/style";
 import Navigation from "../../components/Navigation/Navigation";
-import { ButtonDiv, CardProducts, ProductImage, ProductText, TypographyStyled } from "../../components/Restaurant/styled-restaurant";
+import { ButtonDiv, CardProducts, ProductImage, ProductText, TypographyStyled } from "../../Paginas/Cart/style";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import ActiveOrder from "../../components/ActiveOrder/ActiveOrder";
 
