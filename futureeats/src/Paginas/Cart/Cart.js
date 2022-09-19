@@ -112,24 +112,27 @@ const Cart = () => {
             });
     };
 
-    const cardRestaurantDetails = restaurants.restaurants && restaurants.restaurants.filter((item) => {
-        return item.id === restaurantId;
-    })
-        .map((item) => {
-            return (
-                <RestaurantContainer key={item.id}>
-                    <Typography color="primary" mb={0.5}>
-                        {item.name}
-                    </Typography>
-                    <Typography mb={0.5} color="secondary">
-                        {item.address}
-                    </Typography>
-                    <Typography color="secondary">
-                        {item.deliveryTime} minutos
-                    </Typography>
-                </RestaurantContainer>
-            );
-        });
+    const cardRestaurantDetails =
+        restaurants.restaurants &&
+        restaurants.restaurants
+            .filter((item) => {
+                return item.id === restaurantId;
+            })
+            .map((item) => {
+                return (
+                    <RestaurantContainer key={item.id}>
+                        <Typography color="primary" mb={0.5}>
+                            {item.name}
+                        </Typography>
+                        <Typography mb={0.5} color="secondary">
+                            {item.address}
+                        </Typography>
+                        <Typography color="secondary">
+                            {item.deliveryTime} minutos
+                        </Typography>
+                    </RestaurantContainer>
+                );
+            });
 
     const deliveryPrice =
         restaurants.restaurants &&
@@ -217,4 +220,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
