@@ -10,11 +10,7 @@ export const goToRestaurants = (navigator) =>{
 export const goToProfile = (navigator) =>{
     navigator('/profile')
 }
-<<<<<<< HEAD
 export const goToRestaurante = (navigator,id) =>{
-=======
-export const goToRestaurante = (navigator, id) =>{
->>>>>>> 3a529f0228ab3547e5780306522aff65a12101da
     navigator(`/restaurants/${id}`)
 }
 export const goToCart = (navigator) =>{
