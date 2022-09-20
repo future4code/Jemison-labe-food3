@@ -1,5 +1,5 @@
 import React from "react";
-import {HeaderCart} from '../Cart/style';
+import { ButtonConfirmOrder, HeaderCart } from '../Cart/style';
 
 
 
@@ -7,13 +7,12 @@ import {HeaderCart} from '../Cart/style';
 
 export const Cart = () => {
 
-    
-    return(
+
+    return (
         <div>
             <HeaderCart>Meu carrinho</HeaderCart>
-            
-            <button>Confirmar</button>
-            
+
+            <ButtonConfirmOrder>Confirmar</ButtonConfirmOrder>
         </div>
     )
 }
