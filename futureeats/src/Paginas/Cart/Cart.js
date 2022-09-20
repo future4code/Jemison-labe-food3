@@ -1,11 +1,18 @@
 import React from "react";
+import {HeaderCart} from '../Cart/style';
+
+
+
+
 
 export const Cart = () => {
+
+    
     return(
         <div>
-            <h1>TELA DE LOGIN </h1>
-            <button>LOGAR</button>
-            <button>CADASTRAR - SE </button>
+            <HeaderCart>Meu carrinho</HeaderCart>
+            
+            <button>Confirmar</button>
             
         </div>
     )
