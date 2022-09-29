@@ -22,10 +22,9 @@ export const RestaurantsPage = () =>{
 
     const renderRestaurant = feed.map((res) =>{
         return(
-            <div>
-            key ={res.id}
-            name ={res.name}
-            img ={res.logUrl}
+            <div key ={res.id}>
+            name: {res.name}<br/>
+            img: <img src={res.logoUrl}/>
             </div>
         )
     })
