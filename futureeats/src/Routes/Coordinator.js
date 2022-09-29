@@ -17,9 +17,6 @@ export const goToProfile = (navigate) =>{
 // Detalhe dos retaurantes
 export const goToRestauranteDetail = (navigate, id) =>{
     navigate(`/restaurants/${id}`)
-
-export const goToRestaurante = (navigator,id) =>{
-
 }
 export const goToCart = (navigate) =>{
     navigate('/active-order')
