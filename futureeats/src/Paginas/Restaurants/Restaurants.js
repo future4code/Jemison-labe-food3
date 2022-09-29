@@ -1,43 +1,12 @@
-import { render } from "@testing-library/react";
-import { useEffect,useState } from "react"
-import { ListRestaurant} from '../../Constants/Constants'
-import { CardRestaurant, ListRestaurants } from "./style";
+import React from "react";
 
-export const RestaurantsPage = () =>{
-
-
-    const [feed,setfeed] = useState([]);
-    useEffect(() => {
-
-        ListRestaurant()
-        .then(data =>{
-            setfeed(data.restaurants)
-            console.log(data);
-        })
-        .catch((e) => {
-            console.log(e)
-        })
-
-    },[]);
-
-    const renderRestaurant = feed.map((res) =>{
-        return(
-            <div>
-            key ={res.id}
-            name ={res.name}
-            img ={res.logUrl}
-            </div>
-        )
-    })
-    
-    console.log(renderRestaurant)
-   return(
+export const Restaurants = () => {
+    return(
         <div>
-         
-<main>
-    {renderRestaurant}
-</main>
-        
+            <h1>PAGINA DO RESTAURANTE</h1>
+            
+            
         </div>
     )
 }
+

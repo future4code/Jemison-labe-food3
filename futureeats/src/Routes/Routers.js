@@ -6,7 +6,7 @@ import { Profile } from '../Paginas/Profile/Profile'
 import { ProfileEditAdress } from '../Paginas/ProfileEditAdress/ProfileEditAdress'
 import { ProfileEditData } from '../Paginas/ProfileEditData/ProfileEditData'
 import { Register } from '../Paginas/Register/Register'
-import { RestaurantsPage } from '../Paginas/Restaurants/Restaurants'
+import { Restaurants } from '../Paginas/Restaurants/Restaurants'
 import {RestauranteDetail} from '../Paginas/RestaurantDetail/RestaurantDetail'
 
 
@@ -18,7 +18,7 @@ export const Router = () =>{
                      <Route index element={<LogoPage/>} />
                      <Route path={'/login'} element={<LoginPage/>} />
                      <Route path={'/signup'} element={<Register/>} />
-                     <Route path={'/restaurants'} element={<RestaurantsPage/>} />
+                     <Route path={'/restaurants'} element={<Restaurants/>} />
                      <Route path={'/profile'} element={<Profile/>} />
                      <Route path={'/restaurants/:restaurantId'} element={<RestauranteDetail />} />
                      <Route path={'/active-order'} element={<Cart/>} />
