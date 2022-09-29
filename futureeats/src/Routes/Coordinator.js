@@ -1,24 +1,32 @@
-export const goToLogin = (navigator) =>{
-    navigator('/login')
+export const goToLogin = (navigate) =>{
+    navigate('/login')
 }
-export const goToSignup = (navigator) =>{
-    navigator('/signup')
+export const goToSignup = (navigate) =>{
+    navigate('/signup')
 }
-export const goToRestaurants = (navigator) =>{
-    navigator('/restaurants')
+
+// Restaurantes
+export const goToRestaurants = (navigate) =>{
+    navigate('/restaurants')
 }
-export const goToProfile = (navigator) =>{
-    navigator('/profile')
+export const goToProfile = (navigate) =>{
+    navigate('/profile')
 }
+
+
+// Detalhe dos retaurantes
+export const goToRestauranteDetail = (navigate, id) =>{
+    navigate(`/restaurants/${id}`)
+
 export const goToRestaurante = (navigator,id) =>{
-    navigator(`/restaurants/${id}`)
+
 }
-export const goToCart = (navigator) =>{
-    navigator('/active-order')
+export const goToCart = (navigate) =>{
+    navigate('/active-order')
 }
-export const goToEditAdress = (navigator) =>{
-    navigator('address')
+export const goToEditAdress = (navigate) =>{
+    navigate('address')
 }
-export const goToEditData = (navigator) =>{
-    navigator('/profile/address')
+export const goToEditData = (navigate) =>{
+    navigate('/profile/address')
 }
