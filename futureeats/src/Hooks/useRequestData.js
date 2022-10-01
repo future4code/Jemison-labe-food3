@@ -1,19 +1,37 @@
 import { useEffect, useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 
-const useRequestData = (url)=>{
-    const [data, setData] = useState();
+const useRequestData = (initialData, url) => {
+  const token = localStorage.getItem("token");
 
-    const token = localStorage.getItem("token");
+  const [data, setData] = useState(initialData);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
-    useEffect(()=>{
-        axios.get(url)
-        .then((response)=>{
-            setData(response.data)
-        }).catch((error)=>{
-            alert('Ocorreu um erro, tente novamente')
-        })
-    },[url, token]);
-return data
-}
+  useEffect(() => {
+    getData(url);
+  }, [url, token]);
+
+  const getData = async (url) => {
+    setIsLoading(true);
+
+    const config = {
+      headers: {
+        auth: token,
+      },
+    };
+
+    try {
+      const response = await axios.get(url, config);
+      setData(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      setError(error.response);
+      setIsLoading(false);
+    }
+  };
+
+  return [data, getData, isLoading, error];
+};
+
 export default useRequestData;
