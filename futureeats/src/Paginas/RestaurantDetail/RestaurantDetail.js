@@ -59,5 +59,4 @@ export const RestauranteDetail = () => {
 
       <button>VOLTAR</button>
     </>
-  );
-
+  )};
