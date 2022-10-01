@@ -1,7 +1,12 @@
 import React, {useState} from "react";
 import {useForm} from '../../Hooks/UseForms'
-import { Containerlogin, ContainerForm } from "./style";
-import Logo from '../../Imagens/logo-future-eats@3x.png'
+import { Containerlogin, ContainerForm, Botao } from "./style";
+import Logo from '../../Imagens/big2.png'
+import {FaEye, FaEyeSlash} from 'react-icons/fa'
+import { BASE_URL } from "../../Constants/Constants";
+import axios from "axios";
+import { goToRestaurants, goToSignup } from "../../Routes/Coordinator";
+import { useNavigate } from "react-router-dom";
 import {
     FormControl,
     FormLabel,
@@ -11,32 +16,47 @@ import {
     FormErrorMessage,
     Button,
     IconButton
-  } from '@chakra-ui/react'
-  import {FaEye, FaEyeSlash} from 'react-icons/fa'
+} from '@chakra-ui/react'
+
 
 
 export const LoginPage = () => {
 
-    const [form, onChangeInput, clear] = useForm({
+    const navigate = useNavigate()
+
+    const [form, onChangeInput] = useForm({
         email:'',
         password:''
     })
 
     const [emailValid, setEmailValid] = useState(true)
-    const [password, setPassword] = useState(false)
-    const [show, setShow] = useState(true)
+    const [passwordValid, setPasswordValid] = useState(true)
+    const [show, setShow] = useState(false)
 
-    // função que valida o email
-    const onSubmit = (e)=>{
-        e.preventDefault()
-        console.log(form)
-        setEmailValid(/[a-zA-Z0-9]+@[a-z]{3}[.a-z]?/.test(form.email))
-        setShow(/.{6,}/.test(form.password))
+    // Axios puxando a API do login, daqui se extrai o TOKEN, OBS:Pega com o LocalStorage.set
+    const login = (body) =>{
+        axios.post(`${BASE_URL}/login`,body)
+            .then((response)=>{
+                goToRestaurants(navigate)
+            }).catch((error)=>{
+                console.log(error)
+            })
     }
 
-    // Função que altera se mostra a senha ou não
+    // função que verifica se o email e senha estão corretos, se sim, entra na pagina Retaurantes AUTOMATICAMENTE.
+    const onSubmit = (e)=>{
+        e.preventDefault()
+        setEmailValid(/[a-zA-Z0-9]+@[a-z]{3}[.a-z]?/.test(form.email))
+        setPasswordValid(/.{6,}/.test(form.password))
+            emailValid && form.password && login({
+                email: form.email,
+                password: form.password
+            })
+    }
+
+    // Função que mostra senha ou esconde.
     const onClickPassaword = () =>{
-        setPassword(!password)
+        setShow(!show)
     }
 
     return(
@@ -58,7 +78,7 @@ export const LoginPage = () => {
                                 </FormErrorMessage>
                             ) : undefined}
                         </FormControl>
-                    <FormControl isInvalid={!show}>
+                    <FormControl isInvalid={!passwordValid}>
                         <FormLabel>Senha</FormLabel>
                             <InputGroup size='md'>
                                 <Input as='input'
@@ -66,28 +86,30 @@ export const LoginPage = () => {
                                     value={form.password}
                                     onChange={onChangeInput}
                                     pr='4.5rem'
-                                    type={password ? 'text' : 'password'}
-                                    placeholder='Senha com no minimo 6 caracteres'
+                                    type={show ? 'text' : 'password'}
+                                    placeholder='Senha'
                                 />
                                 <InputRightElement width='4.5rem'>
-                                    <IconButton 
-                                    icon={password ? <FaEyeSlash/> : <FaEye/> }
-                                    h='1.75rem' 
-                                    size='sm' 
-                                    onClick={onClickPassaword}
-                                    />
+                                    <Botao>
+                                        <IconButton 
+                                        icon={ show ? <FaEyeSlash/> : <FaEye/> }
+                                        h='1.75rem' 
+                                        size='sm' 
+                                        onClick={onClickPassaword}
+                                        />
+                                    </Botao> 
                                 </InputRightElement>
                             </InputGroup>
-                                { !show ? (
+                                { !passwordValid ? (
                                     <FormErrorMessage as='p'>
-                                    Senha inválida
+                                    Senha deve conter 6 digitos
                                     </FormErrorMessage>
                                 ) : undefined}
                     </FormControl>
                         <Button type='submit' variant='login' >Enviar</Button>
+                        <Button type='button' variant='login' onClick={() => goToSignup(navigate)} >Clique aqui para se cadastrar.</Button>
                     </form>
                 </ContainerForm>
         </Containerlogin>
     )
 }
-

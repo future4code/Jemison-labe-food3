@@ -15,9 +15,20 @@ export const ContainerForm = styled.div`
     background-color: white;
     border-radius: 10px;
     padding: 10px;
-    background-color: #B8B8B8;
+    background-color: WhiteSmoke;
 
 Input, p{
     margin-bottom: 10px;
 }
+
+Button{
+    margin-bottom: 10px;
+}
+
+Button:hover{
+    background-color: #B8B8B8;
+}
+`
+export const Botao = styled.div`
+    margin-top: 10px;
 `

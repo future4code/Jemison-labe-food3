@@ -8,6 +8,7 @@ import { ButtonConfirmOrder, HeaderCart } from '../Cart/style';
 export const Cart = () => {
 
 
+
     return (
         <div>
             <HeaderCart>Meu carrinho</HeaderCart>
