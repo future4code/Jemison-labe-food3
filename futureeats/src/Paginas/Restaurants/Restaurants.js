@@ -1,7 +1,6 @@
-import { render } from "@testing-library/react";
 import { useEffect,useState } from "react"
 import { ListRestaurant} from '../../Constants/Constants'
-import { CardRestaurant, ListRestaurants } from "./style";
+import { ContainerRestaurants, Restaurants } from "./style";
 
 export const RestaurantsPage = () =>{
 
@@ -23,11 +22,20 @@ export const RestaurantsPage = () =>{
     const renderRestaurant = feed.map((res) =>{
         return(
 
+
             <div>
             key ={res.id}
             name ={res.name}
             img ={res.logUrl}
             </div>
+
+            <ContainerRestaurants key ={res.id}> 
+            <img src={res.logoUrl}/>
+            name: {res.name}<br/>
+            Tempo: {res.deliveryTime}
+            Frete R${res.shipping},00
+            </ContainerRestaurants>
+
         )
     })
     console.log(renderRestaurant)
@@ -46,6 +54,7 @@ export const RestaurantsPage = () =>{
 
    
    return(
+
         <div>
          <input placeholder="Restaurante" 
          type='text' onChange={updateNameValue} 
@@ -67,6 +76,11 @@ export const RestaurantsPage = () =>{
 </main>
         
         </div>
+
+    <div>
+        {renderRestaurant}
+     </div>
+
     )
 }
 }

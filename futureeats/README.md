@@ -7,7 +7,6 @@ Nome dos integrantes:
 - Antonio Marcos Dias Soares
 - John Wilian Aliore
 - Adauto Ferreira de Matos Junior
-- Pessoa 6
 
 Link do Surge: 
 
@@ -18,3 +17,6 @@ O que funciona:
 O que não funciona: 
 - Item 3
 - Item 4
+
+Surge:
+- untidy-degree.surge.sh
