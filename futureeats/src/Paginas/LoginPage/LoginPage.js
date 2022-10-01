@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useForm} from '../../Hooks/UseForms'
-import { Containerlogin, ContainerForm, Botao } from "./style";
+import { Containerlogin, ContainerForm, Botao, Enviar } from "./style";
 import Logo from '../../Imagens/big2.png'
 import {FaEye, FaEyeSlash} from 'react-icons/fa'
 import { BASE_URL } from "../../Constants/Constants";
@@ -107,7 +107,7 @@ export const LoginPage = () => {
                                 ) : undefined}
                     </FormControl>
                         <Button type='submit' variant='login' >Enviar</Button>
-                        <Button type='button' variant='login' onClick={() => goToSignup(navigate)} >Clique aqui para se cadastrar.</Button>
+                        <Enviar type='button' variant='login' onClick={() => goToSignup(navigate)} >Clique aqui para se cadastrar.</Enviar>
                     </form>
                 </ContainerForm>
         </Containerlogin>

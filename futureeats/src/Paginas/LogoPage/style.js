@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 
 export const ContainerLogo = styled.div`
-    height: 88vh;
-    width: 100vh;
+    width: 360px;
+    height: 640px;
+    padding: 0 0 26px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 10px;
 `
 export const Botao = styled.div`
     width: 40vw;
