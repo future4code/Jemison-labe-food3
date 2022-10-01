@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { BASE_URL } from "../../Constants/Constants";
 import { useState } from "react";
+import { ContainerCard, Image} from "./styled";
 
 export const RestauranteDetail = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -38,30 +39,33 @@ export const RestauranteDetail = () => {
       </header>
       <span>Endereço</span>
       {restaurantList.map((item, index) => (
-        <div key={index}>
+        <ContainerCard key={index}>
           <div>
             <span>{item.category}</span>
           </div>
           <div>
             <span>
-              <img
-                height="150"
-                width="150"
+              <Image
                 src={item.photoUrl}
                 alt="miniatura do produto"
               />
             </span>
           </div>
           <div>
-            <span>{item.name}</span>
-            <span>{item.description}</span>
+            <span>{item.name}</span> <br/>
+            <span>{item.description}</span> <br/>
             <span>R${item.price}</span>
           </div>
+<<<<<<< HEAD
           <button onClick={() => addToCart(item)}>Adicionar</button>
         </div>
+=======
+          <button onClick={() => onClickAddButton}>Adicionar</button>
+        </ContainerCard>
+>>>>>>> 25a85463552d64c4ac017b81c3132c2858936254
       ))}
 
       <button>VOLTAR</button>
     </>
-  );
-};
+
+  )};
