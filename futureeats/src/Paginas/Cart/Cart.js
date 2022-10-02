@@ -3,6 +3,7 @@ import useRequestData from "../../Hooks/useRequestData";
 import { BASE_URL } from "../../Constants/Constants";
 import { ButtonConfirmOrder, HeaderCart } from '../Cart/style';
 import { GlobalContext } from "../../context/GlobalContext";
+import axios from "axios";
 
 
 
@@ -24,25 +25,35 @@ export const Cart = () => {
         });
     }, []);
 
-    // Remove produto
+    // Código abaixo renderiza pedido
+    const placeOrder = () => {
+        const body = {
+            products: productData,
+            paymentMethod: paymentValue,
+        };
+        axios.post(`${BASE_URL}/restaurants/${restaurantId}/order`, body, {
+            headers: {
+                auth: token,
+            },
+        })
+            .then((response) => {
+                alert("Pedido realizado!");
+                getActiveOrder(`${BASE_URL}/active-order`);
+            })
+            .catch((error) => {
+                alert(error.response.data.message);
+            });
+    };
 
-    const removeProduct = (id) => {
-        const updatedProductsInCart = productsInCart.map((product) => {
-            if (product.id === id) {
-                return {
-                    ...product, quantity: product.quantity - 1,
-                };
-            }
-            return product;
-        }).filter((product) => product.quantity > 0);
-        setProductsInCart(updatedProductsInCart)
-    }
+    const handleClick = () => {
+        placeOrder();
+    };
 
     const renderProducts = productsInCart.map((product) => {
         return (
             <div>
                 <img
-                    src={product.photUrl}
+                    src={product.photoUrl}
                     alt="miniatura do produto"
                 />
                 <div>
@@ -55,7 +66,22 @@ export const Cart = () => {
                 </div>
             </div>
         )
-    })
+    });
+
+
+    // Remove produto
+    const removeProduct = (id) => {
+        const updatedProductsInCart = productsInCart.map((product) => {
+            if (product.id === id) {
+                return {
+                    ...product, quantity: product.quantity - 1,
+                };
+            }
+            return product;
+        }).filter((product) => product.quantity > 0);
+        setProductsInCart(updatedProductsInCart)
+    }
+
 
     const cardRestaurantDetails =
         restaurants.restaurants &&
@@ -73,6 +99,19 @@ export const Cart = () => {
                 );
             });
 
+    // código para o frete e subtotal
+    const deliveryPrice = restaurants.restaurants && restaurants.restaurants.filter((item) => {
+                return item.id === restaurantId;
+            })
+            .map((item) => {
+                return item.shipping;
+            });
+
+    const total = productsInCart.reduce((soma, item) => {
+        soma = item.quantity * item.price + soma;
+        return soma;
+    }, 0);
+
 
     return (
         <div>
@@ -88,9 +127,14 @@ export const Cart = () => {
             ) : (
                 <p>Carrinho vazio</p>
             )}
-            <>
-                <h3>SubTotal:R$ 0,00</h3>
-            </>
+            {/* Abaixo renderiza valor do produto com o frete de entrega */}
+            <div>
+                <p>Frete: R${Number(deliveryPrice).toFixed(2)}</p>
+                <div mt={2}>
+                    <p>SUBTOTAL</p>
+                    <p>R${(total + Number(deliveryPrice)).toFixed(2)}</p>
+                </div>
+            </div>
             <ButtonConfirmOrder>Confirmar</ButtonConfirmOrder>
         </div>
     )
