@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const ScreenContainer = styled.div`
+export const Container = styled.div`
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -15,6 +15,25 @@ export const InputsContainer = styled.div`
    width: 80vw;
    max-width: 450px;
    margin-bottom: 20px;
+
+   input{
+    height: 56px;
+    width: 328px;
+    margin: 10px;
+    background: none;
+    border-width: medium;
+    border-style: solid;
+    border-color: black;
+    }
+
+    button{
+    background-color: #5cb646;
+    height: 42px;
+    width: 328px;
+    margin-left:12px;
+    justify-content: center;
+    align-items: center;
+    }
 `
 
 export const RegisterFormContainer = styled.div`
@@ -54,4 +73,15 @@ transition: 1.3s;
     
 ;
 
+`
+
+export const Form = styled.form`
+display: flex;
+flex-direction: column;
+margin:auto;
+position: fixed;
+height: auto;
+top:6vh;
+
+   
 `
