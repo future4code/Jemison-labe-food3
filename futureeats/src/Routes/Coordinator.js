@@ -21,9 +21,15 @@ export const goToRestauranteDetail = (navigate, id) =>{
 export const goToCart = (navigate) =>{
     navigate('/active-order')
 }
-export const goToEditAdress = (navigate) =>{
-    navigate('address')
+
+//
+
+export const goToEditAdress = (navigator) =>{
+    navigator('/profile/editAdress')
 }
-export const goToEditData = (navigate) =>{
-    navigate('/profile/address')
+export const goToEditData = (navigator) =>{
+    navigator('/profile/editData')
+}
+export const goToRegisterAdress = (navigate) => {
+    navigate('/register/adress')
 }
